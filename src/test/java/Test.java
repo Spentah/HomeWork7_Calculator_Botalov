@@ -1,7 +1,12 @@
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 
 public class Test {
+    @Rule
+    ExpectedException thrown = ExpectedException.none();
+
     @DataProvider
     public Object [][] positiveTestProvider() {
         return new Object[][]{
@@ -34,6 +39,13 @@ public class Test {
     public void negativeTest(String expected, String number1, String number2, String operation) {
         Calculator.calculation(number1,number2,operation);
         Assert.assertEquals(expected,Calculator.getResult());
+
+    }
+
+    @org.testng.annotations.Test(expectedExceptions = RuntimeException.class)
+    public void exceptionTest(){
+        Calculator.calculation("666", "666", "*");
+        Assert.assertEquals(RuntimeException.class, Calculator.getResult());
     }
 
 

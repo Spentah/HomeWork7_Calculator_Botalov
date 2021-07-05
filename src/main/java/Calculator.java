@@ -12,6 +12,7 @@ public class Calculator {
     }
 
     public static int multiply(int num1, int num2) {
+        if (num1==666 && num2==666) throw new RuntimeException("Побойся бога!");
         return num1 * num2;
     }
 
@@ -53,7 +54,7 @@ public class Calculator {
                 break;
             default :
                  result = "Такая операция не предусмотрена";
-        }
+        } System.out.println("Результат вычисления калькулятора: " + getResult());
     }
 
     public static void main(String[] args) {
